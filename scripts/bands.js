@@ -1,0 +1,58 @@
+//import the getBands function from database
+//export and create a function that uses a for of loop to iterate through the array
+//as we are iterating trough we will <li> the id and name
+//create an addEventListener and match the primary key venue to the booking venueId and then match the venueId to the bands primary key
+//window alert to show the bands booked at that venue
+
+import { getBands } from "./database.js";
+import { getBookings } from "./database.js";
+import { getVenues } from "./database.js";
+
+const bookings = getBookings()
+const bands = getBands()
+const venues = getVenues()
+
+document.addEventListener(
+    "click",
+    (clickEvent) => {
+        const itemClicked = clickEvent.target
+        if(itemClicked.id.startsWith("band")) {
+            const [,bandPrimaryKey] = itemClicked.id.split("--")
+
+            let matchingBand = null
+            let allVenues = ` `
+            for(const band of bands) {
+                if(parseInt(bandPrimaryKey) === band.id){
+                   matchingBand = band
+                }
+            
+            }
+            for(const booking of bookings) {
+                if(parseInt(bandPrimaryKey) === booking.bandId) {
+                    for(const venue of venues){
+                        if(venue.id === booking.venueId){
+                            allVenues += `${venue.name}, `
+                            
+                        }
+                        
+                    }
+                }
+                //window.alert(`${allBands.name} are playing here`)
+            }
+            
+           window.alert(`${matchingBand.name} is playing at the venues:${allVenues}`)
+        }
+    }
+)
+
+
+
+export const Bands = () => {
+    let html = "<ul>"
+
+    for(const band of bands) {
+        html += `<li id="band--${band.id}">${band.name}</li>`
+    }
+    html += "</lu>"
+    return html
+}
