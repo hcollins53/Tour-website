@@ -29,7 +29,7 @@ document.addEventListener(
                 if(parseInt(venuePrimaryKey) === booking.venueId) {
                     for(const band of bands){
                         if(band.id === booking.bandId){
-                            allBands += `${band.name}, `
+                            allBands += `${band.name}\n `
                             
                         }
                         

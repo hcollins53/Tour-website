@@ -146,6 +146,40 @@ const database = {
             date: "01/19/2023"
         },
     ],
+    members: [
+        {
+            id: 1,
+            firstName: "Joy",
+            lastName: "Williams",
+            yearBorn: 1982,
+            role: "singer and pianist",
+            bandId: 1
+        },
+        {
+            id: 2,
+            firstName: "John Paul",
+            lastName: "White",
+            yearBorn: 1972,
+            role: "singer and guitarist",
+            bandId: 1
+        },
+        {
+            id: 3,
+            firstName: "Dan",
+            lastName: "Smyers",
+            yearBorn: 1987,
+            role: "singer and guitarist",
+            bandId: 2
+        },
+        {
+            id: 4,
+            firstName: "Shay",
+            lastName: "Mooney",
+            yearBorn: 1991,
+            role: "singer",
+            bandId: 2
+        },
+    ],
 }
 
 
@@ -160,3 +194,9 @@ export const getVenues = () => {
 export const getBookings = () => {
     return database.bookings.map((booking) => ({...booking}))
 }
+
+export const getMembers = () =>  {
+    return database.members.map((member) => ({...member}))
+}
+
+
